@@ -14,6 +14,4 @@ jobs:
 
       - name: "Pushing an empty commit"
         run: |
-          echo "Initializing..."
-          echo "${{github.repository}}"
-          echo "${{github.actor}}"
+          git push -u origin master
