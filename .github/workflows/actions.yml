@@ -18,13 +18,11 @@ jobs:
           
       - name: Create empty commit and push to target repository
         run: |
-          ls -a
-        # run: |
-        #   cd <target-repo>
-        #   git config user.email "<your-email>"
-        #   git config user.name "<your-name>"
-        #   git commit --allow-empty -m "Empty commit"
-        #   git push origin main
+          cd gowthamr56/portfolio-website
+          git config user.email "${{secrets.USER_EMAIL}}"
+          git config user.name "${{secrets.USER_NAME}}"
+          git commit --allow-empty -m "Empty commit"
+          git push origin main
 
 # name: "ST-CAFFEINE"
 
