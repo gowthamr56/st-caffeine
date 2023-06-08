@@ -14,15 +14,18 @@ jobs:
         with: 
           persist-credentials: false
 
-      - name: "Empty commit"
-        run: |
-          echo "Initializing empty commit"
-          git config --global user.name "${{secrets.USER_NAME}}"
-          git config --global user.email "${{secrets.USER_EMAIL}}"
-          git config --global user.passwd "${{secrets.PASSWD}}"
-          git commit --allow-empty -m "empty commit"
+      # - name: "Empty commit"
+      #   run: |
+      #     echo "Initializing empty commit"
+      #     git config --global user.name "${{secrets.USER_NAME}}"
+      #     git config --global user.email "${{secrets.USER_EMAIL}}"
+      #     git config --global user.passwd "${{secrets.PASSWD}}"
+      #     git commit --allow-empty -m "empty commit"
 
-      - name: "Pushing a commit"
-        uses: ad-m/github-push-action@master
-        with: 
-          github_token: ${{secrets.TOKEN}}
+      # - name: "Pushing a commit"
+      #   uses: ad-m/github-push-action@master
+      #   with: 
+      #     github_token: ${{secrets.TOKEN}}
+
+      - run: |
+          echo "ref: ${{github.ref}}"
