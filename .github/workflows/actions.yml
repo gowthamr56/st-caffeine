@@ -13,7 +13,6 @@ jobs:
         uses: actions/checkout@v3
         with: 
           repository: gowthamr56/portfolio-website
-          persist-credentials: false
 
       - name: "Empty commit"
         run: |
