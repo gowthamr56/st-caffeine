@@ -1,36 +1,64 @@
-name: "ST-CAFFEINE"
 
-on: [ push ]
-  # schedule:
-    # - cron: '0 6 * * *'  # testing trigger time
+name: "ST CAFFEINE"
+
+on: [push]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: "Checking out repository content"
-        uses: actions/checkout@v3
-        with: 
-          repository: gowthamr56/portfolio-website
 
-      - name: "Empty commit"
+      - name: "Checkout the current repository"
+        uses: actions/checkout@v2 
+
+      - name: Set up SSH connection
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Create empty commit and push to target repository
         run: |
-          echo "--AUTHENTICATION--"
-          git config --global user.name "${{secrets.USER_NAME}}"
-          git config --global user.email "${{secrets.USER_EMAIL}}"
-          git config --global user.passwd "${{secrets.PASSWD}}"
+          ls
+        # run: |
+        #   cd <target-repo>
+        #   git config user.email "<your-email>"
+        #   git config user.name "<your-name>"
+        #   git commit --allow-empty -m "Empty commit"
+        #   git push origin main
 
-          echo "--EMPTY COMMIT--"
-          git commit --allow-empty -m "empty commit"
+# name: "ST-CAFFEINE"
 
-          echo "--ADD TARGET ORIGIN--"
-          git remote add target-origin https://github.com/gowthamr56/portfolio-website.git
+# on: [ push ]
+#   # schedule:
+#     # - cron: '0 6 * * *'  # testing trigger time
 
-          echo "--PUSH--"
-          git push -u target-origin master
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-      # - name: "Pushing a commit"
-      #   uses: ad-m/github-push-action@master
-      #   with: 
-      #     github_token: ${{secrets.TOKEN}}
+#     steps:
+#       - name: "Checking out repository content"
+#         uses: actions/checkout@v3
+#         with: 
+#           repository: gowthamr56/portfolio-website
+
+#       - name: "Empty commit"
+#         run: |
+#           echo "--AUTHENTICATION--"
+#           git config --global user.name "${{secrets.USER_NAME}}"
+#           git config --global user.email "${{secrets.USER_EMAIL}}"
+#           git config --global user.passwd "${{secrets.PASSWD}}"
+
+#           echo "--EMPTY COMMIT--"
+#           git commit --allow-empty -m "empty commit"
+
+#           echo "--ADD TARGET ORIGIN--"
+#           git remote add target-origin https://github.com/gowthamr56/portfolio-website.git
+
+#           echo "--PUSH--"
+#           git push -u target-origin master
+
+#       # - name: "Pushing a commit"
+#       #   uses: ad-m/github-push-action@master
+#       #   with: 
+#       #     github_token: ${{secrets.TOKEN}}
