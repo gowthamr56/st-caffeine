@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: "Checking out repository content"
         uses: actions/checkout@v3
+        with: 
+          persist-credentials: false
 
       - name: "Empty commit"
         run: |
