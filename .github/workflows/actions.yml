@@ -18,7 +18,7 @@ jobs:
           
       - name: Create empty commit and push to target repository
         run: |
-          ls
+          ls -a
         # run: |
         #   cd <target-repo>
         #   git config user.email "<your-email>"
