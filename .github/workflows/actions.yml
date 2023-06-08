@@ -12,6 +12,7 @@ jobs:
       - name: "Checking out repository content"
         uses: actions/checkout@v3
         with: 
+          repository: gowthamr56/portfolio-website
           persist-credentials: false
 
       # - name: "Empty commit"
@@ -28,4 +29,6 @@ jobs:
       #     github_token: ${{secrets.TOKEN}}
 
       - run: |
+          echo "actor: ${{github.actor}}"
+          echo "repository: ${{github.repository}}"
           echo "ref: ${{github.ref}}"
