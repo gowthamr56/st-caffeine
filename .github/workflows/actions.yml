@@ -1,0 +1,19 @@
+name: "ST-CAFFEINE"
+
+on: [ push ]
+  # schedule:
+    # - cron: '0 6 * * *'  # testing trigger time
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checking out repository content"
+        uses: actions/checkout@v3
+
+      - name: "Pushing an empty commit"
+        run: |
+          echo "Initializing..."
+          echo "${{github.repository}}"
+          echo "${{github.actor}}"
